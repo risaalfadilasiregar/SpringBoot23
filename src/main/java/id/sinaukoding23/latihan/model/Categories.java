@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "categories")
 @Getter
 @Setter
-public class Categories {
+public class Categories extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

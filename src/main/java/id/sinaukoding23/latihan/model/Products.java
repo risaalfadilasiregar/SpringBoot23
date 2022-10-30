@@ -9,11 +9,14 @@ import javax.persistence.*;
 @Table(name = "products")
 @Getter
 @Setter
-public class Products {
+public class Products extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Integer productId;
+
+    @Column
+    private String productName;
 
     @Column
     private Integer modelYear;
