@@ -1,6 +1,8 @@
 package id.sinaukoding23.latihan.service;
 
 import id.sinaukoding23.latihan.model.Categories;
+import id.sinaukoding23.latihan.model.dto.CategoriesDTO;
+import id.sinaukoding23.latihan.model.mapper.CategoryMapper;
 import id.sinaukoding23.latihan.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,31 +19,30 @@ public class CategoryService {
     private CategoryRepository repository;
 
     @Transactional(readOnly = true)
-    public List<Categories> findAll(){
+    public List<CategoriesDTO> findAll(){
 
         List<Categories> data = repository.findAllByIsDeleted(false);
 
-        data.stream().filter(categories -> !categories.isDeleted()).collect(Collectors.toList());
 
-        return data;
+        return CategoryMapper.INSTANCE.toDtoList(data);
     }
 
     @Transactional
-    public Categories createData(Categories param){
-        param.setCreatedDate(new Date());
-        param.setDeleted(false);
-        return repository.save(param);
+    public CategoriesDTO createData(CategoriesDTO param){
+        Categories data = CategoryMapper.INSTANCE.dtoToEntity(param);
+        data = repository.save(data);
+        return CategoryMapper.INSTANCE.entityToDto(data);
     }
 
     @Transactional
-    public Categories updateData(Categories param, int id){
+    public CategoriesDTO updateData(CategoriesDTO param, int id){
         Categories data = repository.findById(id).get();
 
         if (data != null){
             data.setCategoryName(param.getCategoryName() != null ? param.getCategoryName() : data.getCategoryName());
             data.setUpdatedDate(new Date());
 
-            return repository.save(data);
+            return CategoryMapper.INSTANCE.entityToDto(repository.save(data));
         }
         return null;
     }

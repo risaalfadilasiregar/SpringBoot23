@@ -1,6 +1,8 @@
 package id.sinaukoding23.latihan.service;
 
 import id.sinaukoding23.latihan.model.Staffs;
+import id.sinaukoding23.latihan.model.dto.StaffDTO;
+import id.sinaukoding23.latihan.model.mapper.StaffMapper;
 import id.sinaukoding23.latihan.repository.StaffRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,23 +19,23 @@ public class StaffService {
     private StaffRepository repository;
 
     @Transactional(readOnly = true)
-    public List<Staffs> findAll(){
+    public List<StaffDTO> findAll(){
         List<Staffs> data = repository.findAllByIsDeleted(false);
 
-        data.stream().filter(staffs -> !staffs.isDeleted()).collect(Collectors.toList());
 
-        return data;
+        return StaffMapper.INSTANCE.toDtoList(data);
     }
 
     @Transactional
-    public Staffs createData(Staffs param){
-        param.setCreatedDate(new Date());
-        param.setDeleted(false);
-        return repository.save(param);
+    public StaffDTO createData(StaffDTO param){
+        Staffs data = StaffMapper.INSTANCE.dtoToEntity(param);
+        data = repository.save(data);
+
+        return StaffMapper.INSTANCE.entityToDto(data);
     }
 
     @Transactional
-    public Staffs updateData(Staffs param, int id){
+    public StaffDTO updateData(StaffDTO param, int id){
         Staffs data = repository.findById(id).get();
 
         if(data != null){
@@ -44,7 +46,7 @@ public class StaffService {
             data.setActive(param.getActive() != null ? param.getActive() : data.getActive());
             data.setUpdatedDate(new Date());
 
-            return repository.save(data);
+            return StaffMapper.INSTANCE.entityToDto(repository.save(data));
         }
 
         return null;

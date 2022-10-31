@@ -1,6 +1,8 @@
 package id.sinaukoding23.latihan.service;
 
 import id.sinaukoding23.latihan.model.Stores;
+import id.sinaukoding23.latihan.model.dto.StoreDTO;
+import id.sinaukoding23.latihan.model.mapper.StoreMapper;
 import id.sinaukoding23.latihan.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,24 +19,23 @@ public class StoreService {
     private StoreRepository repository;
 
     @Transactional(readOnly = true)
-    public List<Stores> findAll(){
+    public List<StoreDTO> findAll(){
 
         List<Stores> data = repository.findAllByIsDeleted(false);
 
-        data.stream().filter(stores -> !stores.isDeleted()).collect(Collectors.toList());
-
-        return data;
+        return StoreMapper.INSTANCE.toDtoList(data);
     }
 
     @Transactional
-    public Stores createData(Stores param){
-        param.setCreatedDate(new Date());
-        param.setDeleted(false);
-        return repository.save(param);
+    public StoreDTO createData(StoreDTO param){
+        Stores data = StoreMapper.INSTANCE.dtoToEntity(param);
+        data = repository.save(data);
+
+        return StoreMapper.INSTANCE.entityToDto(data);
     }
 
     @Transactional
-    public Stores updateData(Stores param, int id){
+    public StoreDTO updateData(StoreDTO param, int id){
         Stores data = repository.findById(id).get();
 
         if (data != null){
@@ -48,7 +49,7 @@ public class StoreService {
             data.setZipCode(param.getZipCode() != null ? param.getZipCode() : data.getZipCode());
             data.setUpdatedDate(new Date());
 
-            return repository.save(data);
+            return StoreMapper.INSTANCE.entityToDto(repository.save(data));
         }
 
         return null;

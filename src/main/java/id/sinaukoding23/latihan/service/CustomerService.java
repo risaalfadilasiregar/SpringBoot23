@@ -1,6 +1,8 @@
 package id.sinaukoding23.latihan.service;
 
 import id.sinaukoding23.latihan.model.Customers;
+import id.sinaukoding23.latihan.model.dto.CustomerDTO;
+import id.sinaukoding23.latihan.model.mapper.CustomerMapper;
 import id.sinaukoding23.latihan.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,24 +19,23 @@ public class CustomerService {
     private CustomerRepository repository;
 
     @Transactional(readOnly = true)
-    public List<Customers> findAll(){
-
+    public List<CustomerDTO> findAll(){
         List<Customers> data = repository.findAllByIsDeleted(false);
 
-         data.stream().filter( customer -> !customer.isDeleted()).collect(Collectors.toList());
-
-        return data;
+        return CustomerMapper.INSTANCE.toDtoList(data);
     }
 
     @Transactional
-    public Customers createData(Customers param){
-        param.setCreatedDate(new Date());
-        param.setDeleted(false);
-        return repository.save(param);
+    public CustomerDTO createData(CustomerDTO param){
+        Customers data = CustomerMapper.INSTANCE.dtoToEntity(param);
+        data = repository.save(data);
+
+        return CustomerMapper.INSTANCE.entityToDto(data);
     }
 
+
     @Transactional
-    public Customers updateData(Customers param, int id){
+    public CustomerDTO updateData(CustomerDTO param, int id){
         Customers data = repository.findById(id).get();
 
         if (data != null){
@@ -48,7 +49,7 @@ public class CustomerService {
             data.setState(param.getState() != null ? param.getState() : data.getState());
             data.setUpdatedDate(new Date());
 
-            return repository.save(data);
+            return CustomerMapper.INSTANCE.entityToDto(repository.save(data));
         }
 
         return null;
