@@ -1,6 +1,6 @@
-package id.sinaukoding.latihan.repository;
+package id.sinaukoding23.latihan.repository;
 
-import id.sinaukoding.latihan.model.Staff;
+import id.sinaukoding23.latihan.model.Staff;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

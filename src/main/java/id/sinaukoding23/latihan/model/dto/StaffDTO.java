@@ -1,4 +1,4 @@
-package id.sinaukoding.latihan.model.dto;
+package id.sinaukoding23.latihan.model.dto;
 
 import lombok.Getter;
 import lombok.Setter;

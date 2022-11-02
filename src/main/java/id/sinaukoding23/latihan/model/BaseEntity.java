@@ -1,4 +1,4 @@
-package id.sinaukoding.latihan.model;
+package id.sinaukoding23.latihan.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +10,8 @@ import java.util.Date;
 @Getter
 @Setter
 @MappedSuperclass
+public class BaseEntity {
 
-public abstract class BaseEntity {
     @Column
     private Date createdDate;
 

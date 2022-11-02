@@ -1,7 +1,7 @@
-package id.sinaukoding.latihan.model.mapper;
+package id.sinaukoding23.latihan.model.mapper;
 
-import id.sinaukoding.latihan.model.Product;
-import id.sinaukoding.latihan.model.dto.ProductDTO;
+import id.sinaukoding23.latihan.model.Product;
+import id.sinaukoding23.latihan.model.dto.ProductDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

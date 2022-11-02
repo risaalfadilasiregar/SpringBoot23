@@ -1,8 +1,8 @@
-package id.sinaukoding.latihan.controller;
+package id.sinaukoding23.latihan.controller;
 
-import id.sinaukoding.latihan.common.RestResult;
-import id.sinaukoding.latihan.model.dto.CategoryDTO;
-import id.sinaukoding.latihan.service.CategoryService;
+import id.sinaukoding23.latihan.common.RestResult;
+import id.sinaukoding23.latihan.model.dto.CategoryDTO;
+import id.sinaukoding23.latihan.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

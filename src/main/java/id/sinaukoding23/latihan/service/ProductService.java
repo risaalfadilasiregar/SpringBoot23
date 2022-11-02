@@ -1,15 +1,15 @@
-package id.sinaukoding.latihan.service;
+package id.sinaukoding23.latihan.service;
 
-import id.sinaukoding.latihan.model.Brand;
-import id.sinaukoding.latihan.model.Category;
-import id.sinaukoding.latihan.model.Product;
-import id.sinaukoding.latihan.model.dto.ProductDTO;
-import id.sinaukoding.latihan.model.mapper.BrandMapper;
-import id.sinaukoding.latihan.model.mapper.CategoryMapper;
-import id.sinaukoding.latihan.model.mapper.ProductMapper;
-import id.sinaukoding.latihan.repository.BrandRepository;
-import id.sinaukoding.latihan.repository.CategoryRepository;
-import id.sinaukoding.latihan.repository.ProductRepository;
+import id.sinaukoding23.latihan.model.Brand;
+import id.sinaukoding23.latihan.model.Category;
+import id.sinaukoding23.latihan.model.Product;
+import id.sinaukoding23.latihan.model.dto.ProductDTO;
+import id.sinaukoding23.latihan.model.mapper.BrandMapper;
+import id.sinaukoding23.latihan.model.mapper.CategoryMapper;
+import id.sinaukoding23.latihan.model.mapper.ProductMapper;
+import id.sinaukoding23.latihan.repository.BrandRepository;
+import id.sinaukoding23.latihan.repository.CategoryRepository;
+import id.sinaukoding23.latihan.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package id.sinaukoding.latihan.common;
+package id.sinaukoding23.latihan.common;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;

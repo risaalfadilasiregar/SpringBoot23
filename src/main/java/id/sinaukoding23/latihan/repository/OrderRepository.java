@@ -1,6 +1,6 @@
-package id.sinaukoding.latihan.repository;
+package id.sinaukoding23.latihan.repository;
 
-import id.sinaukoding.latihan.model.Order;
+import id.sinaukoding23.latihan.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

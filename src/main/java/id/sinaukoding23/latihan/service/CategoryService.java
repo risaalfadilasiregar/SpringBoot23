@@ -1,9 +1,9 @@
-package id.sinaukoding.latihan.service;
+package id.sinaukoding23.latihan.service;
 
-import id.sinaukoding.latihan.model.Category;
-import id.sinaukoding.latihan.model.dto.CategoryDTO;
-import id.sinaukoding.latihan.model.mapper.CategoryMapper;
-import id.sinaukoding.latihan.repository.CategoryRepository;
+import id.sinaukoding23.latihan.model.Category;
+import id.sinaukoding23.latihan.model.dto.CategoryDTO;
+import id.sinaukoding23.latihan.model.mapper.CategoryMapper;
+import id.sinaukoding23.latihan.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
