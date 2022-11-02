@@ -1,13 +1,12 @@
-package id.sinaukoding23.latihan.repository;
+package id.sinaukoding.latihan.repository;
 
-import id.sinaukoding23.latihan.model.Staffs;
-import id.sinaukoding23.latihan.model.Stores;
+import id.sinaukoding.latihan.model.Store;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface StoreRepository extends JpaRepository<Stores, Integer> {
+public interface StoreRepository extends JpaRepository<Store, Integer> {
 
-    List<Stores> findAllByIsDeleted(boolean isDeleted);
+    List<Store> findAllByIsDeleted(boolean isDelete);
 
 }

@@ -1,12 +1,10 @@
-package id.sinaukoding23.latihan.model.dto;
+package id.sinaukoding.latihan.model.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-
-@Setter
 @Getter
+@Setter
 public class StoreDTO extends BaseDTO{
     private Integer storeId;
 
@@ -20,7 +18,7 @@ public class StoreDTO extends BaseDTO{
 
     private String city;
 
-    private String state;
+    private Integer state;
 
     private String zipCode;
 

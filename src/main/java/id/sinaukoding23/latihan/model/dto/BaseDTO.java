@@ -1,5 +1,4 @@
-package id.sinaukoding23.latihan.model.dto;
-
+package id.sinaukoding.latihan.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
@@ -12,7 +11,6 @@ import java.util.Date;
 @Setter
 @MappedSuperclass
 public class BaseDTO {
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Date createdDate;
 

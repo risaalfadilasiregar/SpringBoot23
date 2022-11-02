@@ -1,8 +1,7 @@
-package id.sinaukoding23.latihan.model.mapper;
+package id.sinaukoding.latihan.model.mapper;
 
-import id.sinaukoding23.latihan.model.Categories;
-import id.sinaukoding23.latihan.model.dto.CategoriesDTO;
-import id.sinaukoding23.latihan.model.dto.CustomeCategoriesDTO;
+import id.sinaukoding.latihan.model.Category;
+import id.sinaukoding.latihan.model.dto.CategoryDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -11,16 +10,13 @@ import java.util.List;
 @Mapper
 public interface CategoryMapper {
     CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
-    Categories dtoToEntity(CategoriesDTO dto);
 
-    CategoriesDTO entityToDto(Categories param);
+    Category dtoToEntity(CategoryDTO dto);
 
-    List<Categories> toEntityList(List<CategoriesDTO> data);
+    CategoryDTO entityToDto(Category param);
 
-    List<CategoriesDTO> toDtoList(List<Categories> data);
+    List<Category> toEntityList(List<CategoryDTO> data);
 
-    CustomeCategoriesDTO fromCategoriesToCategory(CategoriesDTO param);
-
-    List<CustomeCategoriesDTO> toCustomCategory(List<CategoriesDTO> data);
+    List<CategoryDTO> toDtoList(List<Category> data);
 
 }

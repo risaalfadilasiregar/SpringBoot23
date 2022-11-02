@@ -1,12 +1,10 @@
-package id.sinaukoding23.latihan.controller;
+package id.sinaukoding.latihan.controller;
 
-import id.sinaukoding23.latihan.common.RestResult;
-import id.sinaukoding23.latihan.model.Brands;
-import id.sinaukoding23.latihan.model.dto.BrandsDTO;
-import id.sinaukoding23.latihan.service.BrandService;
+import id.sinaukoding.latihan.common.RestResult;
+import id.sinaukoding.latihan.model.dto.BrandDTO;
+import id.sinaukoding.latihan.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,45 +12,45 @@ import java.util.List;
 @RestController
 @RequestMapping("/brands")
 public class BrandController {
-
-  @Autowired
+    @Autowired
     private BrandService service;
 
-  @GetMapping("/find-all")
-  public RestResult getAllData(){
-    List<BrandsDTO> data = service.findAll();
+    @GetMapping("/find-all")
+    public RestResult getAllData(){
+        List<BrandDTO> data = service.findAll();
 
-    return new RestResult(data,data.size() ==  0 ? "Data Tidak Ditemukan" : "Menampilkan Data",data.size(),HttpStatus.OK);
-  }
-
-
-  @PostMapping("/add")
-  public RestResult createDate(@RequestBody BrandsDTO param){
-    BrandsDTO data = service.createData(param);
-
-    if (data != null){
-      return new RestResult(data, "Data Berhasil Dsimpan" , HttpStatus.OK);
+        return new RestResult(data, data.size() == 0 ? "Data tidak ditemukan" : "Menampilkan data", data.size(), HttpStatus.OK);
     }
 
-    return new RestResult("Data Gagal Disimpan", HttpStatus.BAD_REQUEST);
-  }
+    @PostMapping("/add")
+    public RestResult createData(@RequestBody BrandDTO param){
+        BrandDTO data = service.createData(param);
 
-  @PutMapping("/update")
-  public RestResult updateData(@RequestBody BrandsDTO param,
-                                      @RequestParam(name = "id") int id){
-    BrandsDTO data = service.updateData(param, id);
+        if (data != null){
+            return new RestResult(data, "Data Berhasil disimpan", HttpStatus.OK);
+        }
 
-    if (data != null){
-      return new RestResult(data, "Data Berhasil Di Update", HttpStatus.OK);
+        return new RestResult("Data gagal disimpan", HttpStatus.BAD_REQUEST);
     }
-    return new RestResult("Data Gagal Di Update", HttpStatus.BAD_REQUEST);
-  }
 
-  @DeleteMapping("/delete/{id}")
-  public RestResult deleteData(@PathVariable int id){
-    if (service.deleteData(id)){
-      return new RestResult("Delete Sukses", HttpStatus.OK);
+    @PutMapping("/update")
+    public RestResult updateData(@RequestBody BrandDTO param,
+                                 @RequestParam(name = "id") int id){
+        BrandDTO data = service.updateData(param, id);
+
+        if (data != null){
+            return new RestResult(data, "Data Berhasil diupdate", HttpStatus.OK);
+        }
+
+        return new RestResult("Data gagal diupdate", HttpStatus.BAD_REQUEST);
     }
-    return new RestResult("Delete Gagal", HttpStatus.BAD_REQUEST);
-  }
+
+    @DeleteMapping("/delete/{id}")
+    public RestResult deleteData(@PathVariable int id){
+        if (service.deleteData(id)){
+            return new RestResult("Delete Sukses", HttpStatus.OK);
+        }
+
+        return new RestResult("Delete Gagal", HttpStatus.BAD_REQUEST);
+    }
 }

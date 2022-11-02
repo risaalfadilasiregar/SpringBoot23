@@ -1,42 +1,39 @@
-package id.sinaukoding23.latihan.service;
+package id.sinaukoding.latihan.service;
 
-import id.sinaukoding23.latihan.model.Customers;
-import id.sinaukoding23.latihan.model.dto.CustomerDTO;
-import id.sinaukoding23.latihan.model.mapper.CustomerMapper;
-import id.sinaukoding23.latihan.repository.CustomerRepository;
+import id.sinaukoding.latihan.model.Customer;
+import id.sinaukoding.latihan.model.dto.CustomerDTO;
+import id.sinaukoding.latihan.model.mapper.CustomerMapper;
+import id.sinaukoding.latihan.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
-
     @Autowired
     private CustomerRepository repository;
 
     @Transactional(readOnly = true)
     public List<CustomerDTO> findAll(){
-        List<Customers> data = repository.findAllByIsDeleted(false);
+        List<Customer> data = repository.findAllByIsDeleted(false);
 
         return CustomerMapper.INSTANCE.toDtoList(data);
     }
 
     @Transactional
     public CustomerDTO createData(CustomerDTO param){
-        Customers data = CustomerMapper.INSTANCE.dtoToEntity(param);
+        Customer data = CustomerMapper.INSTANCE.dtoToEntity(param);
         data = repository.save(data);
 
         return CustomerMapper.INSTANCE.entityToDto(data);
     }
 
-
     @Transactional
     public CustomerDTO updateData(CustomerDTO param, int id){
-        Customers data = repository.findById(id).get();
+        Customer data = repository.findById(id).get();
 
         if (data != null){
             data.setFirstName(param.getFirstName() != null ? param.getFirstName() : data.getFirstName());
@@ -57,7 +54,7 @@ public class CustomerService {
 
     @Transactional
     public boolean deleteData(int id){
-        Customers data = repository.findById(id).get();
+        Customer data = repository.findById(id).get();
 
         if (data != null){
             data.setDeleted(true);
@@ -69,5 +66,4 @@ public class CustomerService {
 
         return false;
     }
-
 }

@@ -1,4 +1,4 @@
-package id.sinaukoding23.latihan.common;
+package id.sinaukoding.latihan.common;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus;
 @Getter
 @Setter
 public class RestResult {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object data;
 
     private String message;
@@ -34,7 +34,6 @@ public class RestResult {
 
     public RestResult(String message, HttpStatus status) {
         this.message = message;
-
+        this.status = status;
     }
 }
-

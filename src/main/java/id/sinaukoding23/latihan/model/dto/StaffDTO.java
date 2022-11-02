@@ -1,11 +1,10 @@
-package id.sinaukoding23.latihan.model.dto;
+package id.sinaukoding.latihan.model.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
-
-@Setter
 @Getter
+@Setter
 public class StaffDTO extends BaseDTO{
     private Integer staffId;
 
@@ -13,9 +12,11 @@ public class StaffDTO extends BaseDTO{
 
     private String lastName;
 
-    private String email;
-
     private String phone;
 
-    private Integer active;
+    private String email;
+
+    private String active;
+
+    private StoreDTO store;
 }

@@ -1,17 +1,22 @@
-package id.sinaukoding23.latihan.model.dto;
+package id.sinaukoding.latihan.model.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 
-@Setter
 @Getter
-public class ProductDTO extends BaseDTO {
+@Setter
+public class ProductDTO extends BaseDTO{
     private Integer productId;
 
     private String productName;
 
-    private Integer modelYear;
+    private Integer modelYears;
 
-    private Integer listPrice;
+    private BigDecimal listPrice;
+
+    private CategoryDTO category;
+
+    private BrandDTO brand;
 }
